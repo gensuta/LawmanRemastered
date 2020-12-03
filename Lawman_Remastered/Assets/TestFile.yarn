@@ -1,0 +1,68 @@
+title: Start
+tags: 
+colorID: 0
+position: 112,152
+---
+Hello we're testing something
+[[ Decision ]]
+===
+title: Start2
+tags: 
+colorID: 0
+position: 454,140
+---
+Wow a different starting position
+[[ Decision ]]
+===
+title: Start3
+tags: 
+colorID: 0
+position: 771,169
+---
+Here's a starting position where I'm fucking HONGRY
+[[ Decision ]]
+===
+title: Decision
+tags: 
+colorID: 0
+position: 440,410
+---
+Whoa! You need to make a decision huh.
+-> Wait what?
+    [[Smh]] 
+-> Seems like it...<i>siiigh</i>...
+    [[Sigh]] 
+-> There! I made a decision!
+    [[feisty]]
+===
+title: Smh
+tags: 
+colorID: 0
+position: 62,779
+---
+shaking my headd
+<<if $isHoldingGun is true>>
+  and you're holding you're gun? smh x2!!
+<<endif>>
+===
+title: Sigh
+tags: 
+colorID: 0
+position: 425,779
+---
+why the sigh?
+<<if visited("Start3") is true>>
+    You do realize how hungry I am right?
+<<else>>
+    You have no need to be so down.
+<<endif>>
+===
+title: feisty
+tags: 
+colorID: 0
+position: 742,745
+---
+damn why r u so angy
+You know...
+I can tell you're {$distance} feet away from me right now.
+===

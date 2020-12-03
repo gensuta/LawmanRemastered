@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 4bb17323451beaa45a0870f7d4e635d4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - TestFile-Start-0
+  - TestFile-Start2-1
+  - TestFile-Start3-2
+  - TestFile-Decision-3
+  - TestFile-Smh-4
+  - TestFile-Sigh-5
+  - TestFile-feisty-6
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: The node 'Start 2' contains illegal characters in its
+    title.
+  baseLanguage: {fileID: 7128917941130120860, guid: 4bb17323451beaa45a0870f7d4e635d4,
+    type: 3}
+  localizations: []
