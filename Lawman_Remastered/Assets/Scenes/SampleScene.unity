@@ -721,12 +721,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.95
+  m_fontSize: 12
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 5
+  m_fontSizeMax: 12
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -854,12 +854,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.95
+  m_fontSize: 12
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 5
+  m_fontSizeMax: 12
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -998,11 +998,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba8a561817c74242b8f3c4c24aa8c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
-  distanceFromEnemy: 0
-  isFacingForward: 0
   isHoldingGun: 0
   enemy: {fileID: 334274984}
+  warningDist: 7
+  warningShot1: WarningShot_Pre1
+  warningShot2: WarningShot_Pre2
+  warningShot3: WarningShot_Pre3
+  shotFloor: PostWarningShot
+  handOnGun: WarningShot_PreReaching
+  shotInFoot: WarningShotInFoot
+  blamOne: BLAM!
+  blamEnd: SecondBlam
+  speed: 0.1
+  distanceFromEnemy: 0
 --- !u!1 &1108050845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,13 +1042,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb93f0e2c4272e4b9c72a9b0636d7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingNodes:
-  - Start
-  - Start2
-  - Start3
-  timeTillContinue: 3
-  maxTime: 3
+  timeTillContinue: 2
+  maxTime: 2
+  timeTillPostIntro: 3
+  timer: 0
   isOptionsVisible: 0
+  warnings: 0
+  opponentBullets: 3
+  saidYoMama: 0
+  saidBlam: 0
+  startedIntro: 0
+  startedMonologue: 0
+  intro: Intro
+  introFinal: IntroFinal
+  startMonologue: OldMonologue
+  startBanter: InsultBanterStart
+  gameOver: 0
+  _isTyping: 0
 --- !u!4 &1108050847
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,12 +1183,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.95
+  m_fontSize: 12
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 5
+  m_fontSizeMax: 12
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1417,8 +1435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -252.19048, y: 112.76191}
-  m_SizeDelta: {x: 157.73785, y: 73.20009}
+  m_AnchoredPosition: {x: -308.7, y: 161.5}
+  m_SizeDelta: {x: 194.80829, y: 105.188675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1288283146
 MonoBehaviour:
@@ -1683,8 +1701,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15.82
+  m_fontSizeBase: 15.82
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1835,12 +1853,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.95
+  m_fontSize: 12
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 5
+  m_fontSizeMax: 12
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2061,9 +2079,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1108050846}
+        m_MethodName: OnStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onLineFinishDisplaying:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1108050846}
+        m_MethodName: OnComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onLineUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -2151,8 +2191,8 @@ MonoBehaviour:
   textLanguage: 
   variableStorage: {fileID: 1108050848}
   dialogueUI: {fileID: 1734492353}
-  startNode: 
-  startAutomatically: 0
+  startNode: Intro
+  startAutomatically: 1
   onNodeStart:
     m_PersistentCalls:
       m_Calls:

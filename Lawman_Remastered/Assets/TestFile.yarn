@@ -1,68 +1,339 @@
-title: Start
+title: Intro
 tags: 
 colorID: 0
-position: 112,152
+position: 168,128
 ---
-Hello we're testing something
-[[ Decision ]]
+<<set $bullets to 3>> 
+Alrighty pardner, you think you're such a hot shot?
+Take your paces and we'll see who come out on top.
+
+[[We doin' this here in the tavern? |Intro2]]
+[[Can ya give a fella just a second? |Intro3]]
 ===
-title: Start2
+title: WarningShot_Pre1
 tags: 
 colorID: 0
-position: 454,140
+position: 976,2
 ---
-Wow a different starting position
-[[ Decision ]]
+You're getting awfully close there pardner. 
+I thought we were tryin' to have a proper duel here!
 ===
-title: Start3
+title: WarningShot_Pre2
 tags: 
 colorID: 0
-position: 771,169
+position: 970,296
 ---
-Here's a starting position where I'm fucking HONGRY
-[[ Decision ]]
+Now you better back up there hotshot, if you don't play by the rules here I'm gonna have to put a bullet through you in before we even get to having a real fair and square standoff.
 ===
-title: Decision
+title: WarningShot_Pre3
 tags: 
 colorID: 0
-position: 440,410
+position: 940,595
 ---
-Whoa! You need to make a decision huh.
--> Wait what?
-    [[Smh]] 
--> Seems like it...<i>siiigh</i>...
-    [[Sigh]] 
--> There! I made a decision!
-    [[feisty]]
+Don't think I'm just jokin' around here pardner. 
+I won't hang fire for much longer.
 ===
-title: Smh
+title: PostWarningShot
 tags: 
 colorID: 0
-position: 62,779
+position: 1087,1057
 ---
-shaking my headd
-<<if $isHoldingGun is true>>
-  and you're holding you're gun? smh x2!!
-<<endif>>
+Made me waste a bullet on the gosh darn floorboards with all your horseplay. 
+Now back up and let's play fair, since I won't be so generous next time.
+<<set $bullets to ($bullets - 1)>>
 ===
-title: Sigh
+title: WarningShot_PreReaching
 tags: 
 colorID: 0
-position: 425,779
+position: 1224,658
 ---
-why the sigh?
-<<if visited("Start3") is true>>
-    You do realize how hungry I am right?
-<<else>>
-    You have no need to be so down.
-<<endif>>
+Take your hand off your gun and get back into position or else I'm gonna have to end this before we even get to the good part
 ===
-title: feisty
+title: WarningShotInFoot
 tags: 
 colorID: 0
-position: 742,745
+position: 638,1321
 ---
-damn why r u so angy
-You know...
-I can tell you're {$distance} feet away from me right now.
+Dag gummit, now you went and got yourself hurt on my darn warning shot. 
+Ain't gonna be no fun havin' a duel with a fella who can't even walk straight.
+Let's get you up and better for now, but once you're up and walkin' again, we're gonna have a real duel,
+and I won't let your horseplay slide, y'hear me?
+===
+title: OldMonologue
+tags: 
+colorID: 0
+position: 1890,-216
+---
+You look a little nervous there...
+Y'know, you remind me of the days when I was young and had just started getting into enough trouble to land myself in duels like this.
+I still remember clear as day what the ol' man I took on had to say before I shot him dead...
+He said somethin like... 
+[[ OldMonologue_One ]]
+===
+title: BLAM!
+tags: 
+colorID: 0
+position: 1822,320
+---
+AH!
+<<set $bullets to ($bullets - 1)>> 
+Dag gummit, I'm recountin some ol' memories and you open up that big bazoo of yours. 
+If you really don't wanna listen to me you could always pull out that six shooter of yours.
+Makin' me waste a gosh dang bullet... bunch'a hogwash that is. 
+Now do you wanna listen to the rest of my story or get back in our proper places.
+
+[[I'll hear you out this time... |ContinueLog]]
+[[I'm in no mood to keep listenin' to all that nonsense of yours pardner |ContinueDuel]]
+===
+title: FinishLog
+tags: 
+colorID: 0
+position: 2317,313
+---
+Wow, you're a patient fella and a good listener. Suprised ya didn't take a shot while I was yammerin' on there. 
+I know I definitely considered it back in the day.
+
+Well I'm all tuckered out now. 
+If you wanna take a shot now's your chance, but if you're down on the idea of killin' a winded fella, I wouldn't be opposed to just sittin' down and gettin roostered together.
+
+[[Bartender! |DrunkEnd]]
+[[I don't think we're finished yet |FinishLog_2]]
+===
+title: SecondBlam
+tags: 
+colorID: 0
+position: 1787,978
+---
+Alright hotshot, I'm not falling for that hogwash twice. 
+I told ya what would happen if ya fooled around like that again didn't I?
+===
+title: OldMonologue_One
+tags: 
+colorID: 0
+position: 2255,-263
+---
+" Well…. Rohnny Ringo, The Saint Elmo Serpent, you look like somebody just walked over your grave. 
+I’m surprised you showed your face around these parts, I didn’t think you had it in you
+Its a hell of a thing killing a man. You take away everything he’s got and everything he’s ever going to have."
+[[ OldMonologue_Two ]]
+===
+title: OldMonologue_Two
+tags: 
+colorID: 0
+position: 2532,-259
+---
+"You started a game you never did finish. Play for blood remember
+Yous an outlaw now, and me, well.. I’s the hangman round these parts
+Your shooting iron works now doesnit"
+[[ OldMonologue_Three ]]
+===
+title: OldMonologue_Three
+tags: 
+colorID: 0
+position: 2807,-247
+---
+"Now do yous have anything to say before you see your old man again.
+Damn right you’re scared. I can see it in your eyes.
+I mean to kill you right here, Rohnny. Or see you hanged in Fort Smith at Judge Parker's convenience. 
+Which'll it be?"
+[[ OldMonologue_Four ]]
+===
+title: OldMonologue_Four
+tags: 
+colorID: 0
+position: 2806,4
+---
+Fill your hands, you son of a bitch!
+I’ll put you in the ground just like I did your old man
+Move a little strange, you're gonna get a bullet. 
+Not a warning, not a question...a bullet.
+[[ OldMonologue_Five ]]
+===
+title: OldMonologue_Five
+tags: 
+colorID: 0
+position: 2564,1
+---
+It’s like my mama always told me, never put off till tomorrow people you can kill today
+I don’t know why you came here Rohnny, Dying ain’t much of a living boy
+Well are ya’ gonna pull that pistol or just keep whistling 
+Are you gonna do something? Or just stand there and stare
+Well Ringo, this is a .44 Magnum, the most powerful handgun in the world and would blow your head clean off, you've gotta ask yourself one question: "Do I feel lucky?" Well, do ya, kid?
+[[FinishLog]]
+===
+title: InsultBanterMamaProvoke
+tags: 
+colorID: 0
+position: 3305,34
+---
+Well don't you go talkin' nonsense about a fine woman who isn't here to defend herself. Although I bet my mama could take you down in a duel any day.
+
+[[I'd say your mama's so dull she couldn't even teach a hen to cluck |InsultBanterYoMama]]
+[[Alright, although if she is such a fine woman, then she'd probabaly need a better gun than that there piece a horse dung |InsultBanterGun]]
+===
+title: InsultBanterVoice
+tags: 
+colorID: 0
+position: 3285,-229
+---
+Oh well then aren't you just askin' to hear it some more then... 
+and I mean, hell, if you don't like it you could always pull out that gun of yours... 
+but I don't think you're brave enough to do that hotshot.
+
+[[I'd rather be a coward than whatever brash lunkhead your mama raised you to be |InsultBanterMamaProvoke]]
+[[If you really wanna see my skill with my pistol, I can take that ugly hat right off your pretty little head |InsultBanterHat]]
+===
+title: InsultBanterChill
+tags: 
+colorID: 0
+position: 3278,-471
+---
+Hey, hey, hotshot... a duel aint no fun if there aint no banter. 
+C'mon, take your best shot at me, I promise, I won't cry.
+
+[[I'm not sure I wanna keep talkin if I'm gonna have to listen to your creaky voice |InsultBanterVoice]]
+[[A little banter might be nice but I don't know if I can keep lookin' at that hideous 'stache of yours |InsultBanterLooks]]
+===
+title: InsultBanterStart
+tags: 
+colorID: 0
+position: 3290,-776
+---
+You doin' alright pardner? I know I keep callin' you hotshot, but those bags under your eyes suggest that you aint feelin' too hot youself.
+
+[[You don't need to worry 'bout me, I'm doin' just fine |InsultBanterChill]]
+[[Well your mug aint doing too much for you either |InsultBanterLooks]]
+===
+title: InsultBanterLooks
+tags: 
+colorID: 0
+position: 3832,-719
+---
+Aw, I must say it hurts that a handsome fella like you aint into my beautiful face. 
+But oh well, what I lack in beauty I make up for in pure style.
+
+[[If you want style, I can help by shootin' that piece of junk right of that head of yours |InsultBanterHat]]
+[[Well your little partner in crime there ain't helpin whatver your style is |InsultBanterGun]]
+===
+title: IntroSemiFinal1
+tags: 
+colorID: 0
+position: -326,663
+---
+Let's get this show on the road pardner. 
+I've already done three duels today so I still got three bullets left in my trusty six shooter. 
+More than enough to deal with you.
+Unless you've got no bullets left there in that gun of yours, I say it's about time we take our paces.
+[[Well actually... |IntroFinal]]
+===
+title: IntroSemiFinal2
+tags: 
+colorID: 0
+position: 82,620
+---
+Oh don't worry about that. I've been entertainin' these fine folks all day. 
+I've already gotten through three duels so far, and so fast that I haven't even had time to reload my ol' trusty six shooter.
+So unless you've got no bullets left there in that gun of yours, I say it's about time we take our paces.
+[[Well actually... |IntroFinal]]
+===
+title: IntroFinal
+tags: 
+colorID: 0
+position: 196,944
+---
+I don't want to hear no excuses pardner. 
+Get your legs moving and let's get this thing going.
+===
+title: ContinueLog
+tags: 
+colorID: 0
+position: 1802,645
+---
+Alright then pardner, I'll get back into it, but you better not try any of that screamin' nonsense or else the next bullet out of this gun here won't be goin' to waste.
+===
+title: ContinueDuel
+tags: 
+colorID: 0
+position: 2132,620
+---
+Alright hotshot, we can get back to it. 
+But if you're so antsy, I'd love to see you do somethin more than just reach for that six shooter of yours.
+===
+title: DrunkEnd
+tags: 
+colorID: 0
+position: 2483,683
+---
+I'll pony up the cash, but you better not get anythin' too expensive or we might just end up back where we started.
+===
+title: FinishLog_2
+tags: 
+colorID: 0
+position: 2773,432
+---
+After all that you wanna keep this standoff goin'? 
+You certainly got stamina, I can tell ya that pardner.
+Alright, let's get back settled and I can get this over and done with.
+===
+title: InsultBanterHat
+tags: 
+colorID: 0
+position: 3945,-299
+---
+Oh you got an issue with my here hat pardner? 
+Well, I can go tit for tat on that one and take off that hair case of yours.
+<<set $bullets to ($bullets - 1)>> 
+Can't tell if you look better or worse without the cap hotshot. 
+Either way, hope you aren't feelin too comfortable.
+
+[[InsultBanterOffRamp]]
+===
+title: InsultBanterGun
+tags: 
+colorID: 0
+position: 3663,-12
+---
+Oh, you wanna talk about my pride and joy like that? 
+Well, it doesn't matter if ya think she's pretty or not hotshot. 
+All that matters to you is whether she can take care of business, and well...
+*Shoots*
+I don't got no doubts about that.
+
+[[InsultBanterOffRamp]]
+===
+title: InsultBanterYoMama
+tags: 
+colorID: 0
+position: 3353,320
+---
+Banter is one thing hotshot, but you crossed a line talkin' bout my mama like that. 
+I ain't got no more time for a fella who don't got no manners.
+===
+title: InsultBanterOffRamp
+tags: 
+colorID: 0
+position: 4026,328
+---
+Well now that I've already got my hand on the trigger, I'm not really in the mood to hear any more insults outta you, so I don't think we need to piddle around like this much longer.
+===
+title: Intro2
+tags: 
+colorID: 0
+position: -192,352
+---
+Well I'm feelin' a little antsy. 
+No reason to walk all the way outside when we've got some good space here, aint that right?
+[[I guess... |IntroSemiFinal1]]
+[[Let's not disturb all the other patrons |IntroSemiFinal2]]
+===
+title: Intro3
+tags: 
+colorID: 0
+position: 397,343
+---
+No can do. We're doin' this here and now pardner. 
+If you aint ready, well, that'll make things easier for me. 
+I've already taken three duels today so both my ol' trusty six shooter and I are warmed up and ready to go.
+Unless you've got no bullets left there in that gun of yours, I say it's about time we take our paces.
+[[Well actually... |IntroFinal]]
 ===

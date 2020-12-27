@@ -5,50 +5,108 @@ using Yarn.Unity;
 
 public class ScenarioHandler : MonoBehaviour
 {
-    [SerializeField]
-    string[] startingNodes;// the list of nodes we can start at
-    int rand;
 
-
-    bool nodesLoaded; // since dr doesn't load nodes on awake we need this =_=
     DialogueRunner dr;
     InMemoryVariableStorage yarnVars;
 
     [SerializeField]
-    float timeTillContinue, maxTime;
+    float timeTillContinue, maxTime, timeTillPostIntro, timer;
 
     public bool isOptionsVisible;
+
+    [Space]
+    [Header("Vars for story")]
+    public int warnings;
+    public int opponentBullets = 3;
+    public bool saidYoMama, saidBlam,startedIntro,startedMonologue;
+
+    [Space]
+    [Header("Node Names")]
+    [SerializeField] string intro;
+    public string introFinal, startMonologue, startBanter;
+
+    public bool gameOver;
+    [SerializeField] bool _isTyping;
 
     // Start is called before the first frame update
     void Start()
     {
         yarnVars = GetComponent<InMemoryVariableStorage>();
 
-        rand = Random.Range(0, startingNodes.Length);
         dr = FindObjectOfType<DialogueRunner>();
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        if(!isOptionsVisible) timeTillContinue -= Time.deltaTime;
-
-        if(dr.NodeExists(startingNodes[rand]) && !nodesLoaded)
+        if (gameOver) Debug.Log("GAME OVER!!!");
+        else
         {
-            dr.startNode = startingNodes[rand];
-            dr.StartDialogue();
-            nodesLoaded = true;
-        }
-        
+            opponentBullets = (int)GetValue("$bullets").AsNumber;
+            Debug.Log(GetValue("$bullets"));
 
-        if(timeTillContinue <= 0 && !isOptionsVisible)
-        {
-            Continue();
+
+            if (!isTyping() && timer == 0) timeTillContinue -= Time.deltaTime;
+
+            if (GetCurrentNode() == introFinal) startedIntro = true;
+            if (startedIntro && !isTyping()) timer += Time.deltaTime;
+
+            if (timer > timeTillPostIntro) ChooseRandDialogue();
+
+
+
+            if (timeTillContinue <= 0 && !isOptionsVisible)
+            {
+                Continue();
+            }
+
         }
+    }
+
+    public void ChooseRandDialogue()
+    {
+        timer = 0;
+        startedIntro = false;
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+        {
+            startedMonologue = true;
+            StartNewNode(startMonologue);
+        }
+        if (rand == 1) StartNewNode(startBanter);
+    }
+
+    public string GetCurrentNode()
+    {
+        return dr.CurrentNodeName;
+    }
+
+    public bool isTyping()
+    {
+        return _isTyping;
+    }
+
+    public void OnComplete()
+    {
+        _isTyping = false;
+    }
+
+    public void OnStart()
+    {
+        _isTyping = true;
+    }
+
+    public void StartNewNode(string s)
+    {
+        dr.Stop();
+        dr.StartDialogue(s);
     }
 
     void Continue()
     {
+        OnStart();
         dr.Dialogue.Continue();
         ResetTimer();
     }

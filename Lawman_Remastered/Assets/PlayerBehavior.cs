@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    [Header("Floats")]
-    [SerializeField]
-    float speed, distanceFromEnemy;
+    [SerializeField] bool isHoldingGun;
 
-    [Space]
-
-    [Header("Booleans")]
-    [SerializeField]
-    bool isFacingForward, isHoldingGun;
-
-    [Space]
-    [SerializeField]
-    GameObject enemy;
+    [SerializeField] GameObject enemy;
 
 
     SpriteRenderer sr;
     ScenarioHandler scenario;
+
+    [SerializeField] int warningDist;
+
+    [Space]
+    [Header("Node Names")]
+    [SerializeField] string warningShot1;
+    public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamEnd;
+
+    float timeTillWarning = 1f;
+
+    bool warnedAboutGun, didShootFloor;
+
+    [Header("Floats")]
+    [SerializeField] float speed;
+    [SerializeField] float distanceFromEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,39 +37,102 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceFromEnemy = Vector3.Distance(transform.position,enemy.transform.position);
-
-        var dist = new Yarn.Value(Mathf.RoundToInt(distanceFromEnemy));
-
-        scenario.SetValue("$distance", dist);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!scenario.gameOver)
         {
-            isHoldingGun = true;
-            var val = new Yarn.Value(true);
-            scenario.SetValue("$isHoldingGun", val);
+            distanceFromEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 
-            /*   example of yarn variable mess that worked
-             *   Debug.Log(yarnVar.GetValue("$didCry").AsBool);
-                     if (Input.GetKeyDown(KeyCode.Space))
-                         yarnVar.SetValue("$didCry", valueToSet);*/
-        }
+            var dist = new Yarn.Value(Mathf.RoundToInt(distanceFromEnemy));
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Move(Vector2.left);
+            scenario.SetValue("$distance", dist);
 
-            isFacingForward = false;
-            sr.flipX = false;
-        }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                isHoldingGun = true;
+            }
+            else
+            {
+                isHoldingGun = false;
+            }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Move(Vector2.right);
+            if (Input.GetKeyDown(KeyCode.B) && scenario.startedMonologue)
+            {
+                if (!scenario.saidBlam)
+                {
+                    scenario.StartNewNode(blamOne);
+                    scenario.saidBlam = true;
+                }
+                else
+                {
+                    scenario.StartNewNode(blamEnd);
+                    scenario.gameOver = true;
+                }
+            }
 
 
-            isFacingForward = true;
-            sr.flipX = true;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                Move(Vector2.left);
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                Move(Vector2.right);
+            }
+
+            if (distanceFromEnemy < warningDist && timeTillWarning == 1f && !didShootFloor && scenario.isTyping())
+            {
+                if (isHoldingGun)
+                {
+                    if (!warnedAboutGun)
+                    {
+                        scenario.StartNewNode(handOnGun);
+                        warnedAboutGun = true;
+                    }
+                    else
+                    {
+                        scenario.StartNewNode(shotFloor);
+                        didShootFloor = true;
+                    }
+                }
+                else
+                {
+                    switch (scenario.warnings)
+                    {
+                        case 0:
+                            scenario.StartNewNode(warningShot1);
+                            scenario.warnings++;
+                            break;
+                        case 1:
+                            scenario.StartNewNode(warningShot2);
+                            scenario.warnings++;
+                            break;
+                        case 2:
+                            scenario.StartNewNode(warningShot3);
+                            scenario.warnings++;
+                            break;
+                        case 3:
+                            if (distanceFromEnemy < 1.5f)
+                                scenario.StartNewNode(shotInFoot);
+                            else
+                                scenario.StartNewNode(shotFloor);
+                            scenario.warnings++;
+                            didShootFloor = true;
+                            break;
+                    }
+                }
+                timeTillWarning -= Time.deltaTime;
+            }
+
+            if (!scenario.isTyping() && timeTillWarning < 1f && timeTillWarning > 0f)
+            {
+                timeTillWarning -= Time.deltaTime;
+            }
+
+            if (timeTillWarning <= 0f)
+            {
+                timeTillWarning = 0f;
+            }
         }
     }
 
