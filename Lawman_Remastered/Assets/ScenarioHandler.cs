@@ -24,7 +24,7 @@ public class ScenarioHandler : MonoBehaviour
     [Space]
     [Header("Node Names")]
     [SerializeField] string intro;
-    public string introFinal, startMonologue, startBanter;
+    public string introFinal, startMonologue, startBanter, yoMamaStart;
 
     public bool gameOver;
     [SerializeField] bool _isTyping;
@@ -59,7 +59,7 @@ public class ScenarioHandler : MonoBehaviour
 
             if (timer > timeTillPostIntro) ChooseRandDialogue();
 
-
+            if (!dr.IsDialogueRunning) _isTyping = false;
 
             if (timeTillContinue <= 0 && !isOptionsVisible)
             {
@@ -117,6 +117,11 @@ public class ScenarioHandler : MonoBehaviour
         OnStart();
         dr.Dialogue.Continue();
         ResetTimer();
+
+        if(!saidYoMama && GetCurrentNode() == yoMamaStart)
+        {
+            saidYoMama = true;
+        }
     }
 
     public void SetOptionsVisible(bool b)

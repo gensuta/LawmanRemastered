@@ -8,8 +8,8 @@ public class PlayerBehavior : MonoBehaviour
 
     [SerializeField] GameObject enemy;
 
+    [SerializeField] Animator anim, enemyAnim;
 
-    SpriteRenderer sr;
     ScenarioHandler scenario;
 
     [SerializeField] int warningDist;
@@ -19,24 +19,26 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] string warningShot1;
     public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamEnd;
 
-    [SerializeField] float timeTillWarning = 1f;
+    [SerializeField] float timeTillShot, timeTillWarning = 1f;
 
-    bool warnedAboutGun, didShootFloor;
+    bool warnedAboutGun, didShootFloor, wasShot;
 
     [Header("Floats")]
     [SerializeField] float speed;
     [SerializeField] float distanceFromEnemy;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         scenario = FindObjectOfType<ScenarioHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (!scenario.gameOver)
         {
             distanceFromEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -47,6 +49,7 @@ public class PlayerBehavior : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space))
             {
+                anim.Play("playerFeint");
                 isHoldingGun = true;
             }
             else
@@ -67,16 +70,39 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
 
-
-
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            if (timeTillShot == 0)
             {
-                Move(Vector2.left);
-            }
+                if (scenario.isTyping() && !scenario.isOptionsVisible)
+                {
+                    if (scenario.GetCurrentNode() == scenario.startMonologue || scenario.GetCurrentNode() == scenario.startBanter)
+                        enemyAnim.Play("enemyLaugh");
+                    else if (scenario.GetCurrentNode() == warningShot1 || scenario.GetCurrentNode() == warningShot2)
+                        enemyAnim.Play("enemyNervous1");
+                    else if (scenario.GetCurrentNode() == warningShot3)
+                        enemyAnim.Play("enemyNervous2");
+                    else
+                        enemyAnim.Play("enemyTalk");
+                }
+                else enemyAnim.Play("enemyIdle");
 
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                Move(Vector2.right);
+                if (!wasShot)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                    {
+                        anim.Play("playerShuffle");
+                        Move(Vector2.left);
+                    }
+                    else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                    {
+                        anim.Play("playerShuffle");
+                        Move(Vector2.right);
+                    }
+                    else
+                    {
+                        if (!isHoldingGun)
+                            anim.Play("playerIdle");
+                    }
+                }
             }
 
             if (distanceFromEnemy < warningDist && timeTillWarning == 1f && !didShootFloor && scenario.isTyping())
@@ -90,8 +116,11 @@ public class PlayerBehavior : MonoBehaviour
                     }
                     else
                     {
-                        if (distanceFromEnemy < 4f)
+                        if (distanceFromEnemy < 6f)
+                        {
                             scenario.StartNewNode(shotInFoot);
+                            wasShot = true;
+                        }
                         else
                             scenario.StartNewNode(shotFloor);
                     }
@@ -113,12 +142,11 @@ public class PlayerBehavior : MonoBehaviour
                             scenario.warnings++;
                             break;
                         case 3:
-                            if (distanceFromEnemy < 4f)
-                                scenario.StartNewNode(shotInFoot);
-                            else
-                                scenario.StartNewNode(shotFloor);
+                            enemyAnim.Play("enemyNervousFire");
+                            anim.Play("playerShot");
+                            timeTillShot = 2f;
                             scenario.warnings++;
-                            didShootFloor = true;
+                            wasShot = true;
                             break;
                     }
                 }
@@ -134,6 +162,42 @@ public class PlayerBehavior : MonoBehaviour
             {
                 timeTillWarning = 1f;
             }
+
+            if (timeTillShot > 0 && timeTillShot < 2.1f)
+            {
+                timeTillShot -= Time.deltaTime;
+            }
+            else if (timeTillShot < 0f)
+            {
+                if (scenario.warnings >= 3)
+                {
+                    if (distanceFromEnemy < 6f)
+                    {
+                        scenario.StartNewNode(shotInFoot);
+                        wasShot = true;
+                    }
+                    else
+                    {
+                        didShootFloor = true;
+                        scenario.StartNewNode(shotFloor);
+                    }
+                    timeTillShot = 0f;
+                }
+            }
+        }
+        else
+        {
+            if (scenario.saidBlam || scenario.saidYoMama)
+            {
+                enemyAnim.Play("enemyConfidentFire");
+                anim.Play("playerShot");
+                wasShot = true;
+            }
+            else
+                if (!scenario.isTyping())
+                {
+                    enemyAnim.Play("enemyIdle");
+                }
         }
     }
 
