@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTillContinue: 2
   maxTime: 2
-  timeTillPostIntro: 3
+  timeTillPostIntro: 4
   timer: 0
   isOptionsVisible: 0
   warnings: 0
