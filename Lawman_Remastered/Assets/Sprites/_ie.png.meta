@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: ad7cad32bd4904cc883cff1856f46c9b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2202597786428200900
+    second: _ie_0
+  - first:
+      213: 7312326440632374259
+    second: _ie_1
+  - first:
+      213: -1784483872536605532
+    second: _ie_2
+  - first:
+      213: 5802067322834824030
+    second: _ie_3
+  - first:
+      213: -2591433762675874676
+    second: _ie_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +56,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -73,9 +88,138 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _ie_0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 49
+        width: 483
+        height: 628
+      alignment: 9
+      pivot: {x: 0.53897035, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c75d135403319e10800000000000000
+      internalID: 2202597786428200900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _ie_1
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 78
+        width: 570
+        height: 717
+      alignment: 9
+      pivot: {x: 0.74665016, y: 0.3785849}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f3d697c72a9a7560800000000000000
+      internalID: 7312326440632374259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _ie_2
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 82
+        width: 784
+        height: 682
+      alignment: 9
+      pivot: {x: 0.8910896, y: 0.4369894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4acca0e5f5d3c37e0800000000000000
+      internalID: -1784483872536605532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _ie_3
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 71
+        width: 1179
+        height: 690
+      alignment: 9
+      pivot: {x: 0.91457295, y: 0.49114525}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ba87c4d75158050800000000000000
+      internalID: 5802067322834824030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _ie_4
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 59
+        width: 1191
+        height: 696
+      alignment: 9
+      pivot: {x: 0.96169555, y: 0.49122155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8420cc09b0690cd0800000000000000
+      internalID: -2591433762675874676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

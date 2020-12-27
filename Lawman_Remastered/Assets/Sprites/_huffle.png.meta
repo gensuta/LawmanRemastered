@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: fc7a6f4b11b9446598349bd335aac8a2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5086954587056483403
+    second: _huffle_0
+  - first:
+      213: 6212481147802677731
+    second: _huffle_1
+  - first:
+      213: 5914754513848344866
+    second: _huffle_2
+  - first:
+      213: -1978903921156361800
+    second: _huffle_3
+  - first:
+      213: -4184271299418744524
+    second: _huffle_4
+  - first:
+      213: 7052778996596077542
+    second: _huffle_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +59,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -73,9 +91,159 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _huffle_0
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 31
+        width: 654
+        height: 511
+      alignment: 9
+      pivot: {x: 0.4999996, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b354f141c18769b0800000000000000
+      internalID: -5086954587056483403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _huffle_1
+      rect:
+        serializedVersion: 2
+        x: 3708
+        y: 23
+        width: 604
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5303688, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1f69450ba273650800000000000000
+      internalID: 6212481147802677731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _huffle_2
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 25
+        width: 620
+        height: 587
+      alignment: 9
+      pivot: {x: 0.49999923, y: 0.44855234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221a19384ed651250800000000000000
+      internalID: 5914754513848344866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _huffle_3
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 23
+        width: 531
+        height: 599
+      alignment: 9
+      pivot: {x: 0.50913805, y: 0.41234288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b1f8de4e558984e0800000000000000
+      internalID: -1978903921156361800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _huffle_4
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 21
+        width: 555
+        height: 582
+      alignment: 9
+      pivot: {x: 0.5195462, y: 0.3865371}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43998422c6b7ee5c0800000000000000
+      internalID: -4184271299418744524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _huffle_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 25
+        width: 601
+        height: 562
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.4475625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3f173512180e160800000000000000
+      internalID: 7052778996596077542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

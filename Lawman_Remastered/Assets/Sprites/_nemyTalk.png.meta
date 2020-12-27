@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: a1cfbd6542179487980e84d1e8af5223
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8821881046323392501
+    second: _nemyTalk_0
+  - first:
+      213: -3688847974493351784
+    second: _nemyTalk_1
+  - first:
+      213: -8251940385459753841
+    second: _nemyTalk_2
+  - first:
+      213: -328250775471334846
+    second: _nemyTalk_3
+  - first:
+      213: -1635299806712819861
+    second: _nemyTalk_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +56,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -73,9 +88,138 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _nemyTalk_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 59
+        width: 727
+        height: 500
+      alignment: 9
+      pivot: {x: 0.477215, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00942fbde1629580800000000000000
+      internalID: -8821881046323392501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _nemyTalk_1
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 71
+        width: 728
+        height: 503
+      alignment: 9
+      pivot: {x: 0.47545245, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89097e1cf449eccc0800000000000000
+      internalID: -3688847974493351784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _nemyTalk_2
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 60
+        width: 729
+        height: 500
+      alignment: 9
+      pivot: {x: 0.47883075, y: 0.49999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ca8f8a0f73b7d80800000000000000
+      internalID: -8251940385459753841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _nemyTalk_3
+      rect:
+        serializedVersion: 2
+        x: 2539
+        y: 63
+        width: 731
+        height: 498
+      alignment: 9
+      pivot: {x: 0.4802126, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ad8caa8a1d17bf0800000000000000
+      internalID: -328250775471334846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _nemyTalk_4
+      rect:
+        serializedVersion: 2
+        x: 3427
+        y: 62
+        width: 740
+        height: 496
+      alignment: 9
+      pivot: {x: 0.46821553, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f0e9f6d7f3e49e0800000000000000
+      internalID: -1635299806712819861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
