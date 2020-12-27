@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] string warningShot1;
     public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamEnd;
 
-    float timeTillWarning = 1f;
+    [SerializeField] float timeTillWarning = 1f;
 
     bool warnedAboutGun, didShootFloor;
 
@@ -64,18 +64,17 @@ public class PlayerBehavior : MonoBehaviour
                 else
                 {
                     scenario.StartNewNode(blamEnd);
-                    scenario.gameOver = true;
                 }
             }
 
 
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 Move(Vector2.left);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 Move(Vector2.right);
             }
@@ -91,8 +90,10 @@ public class PlayerBehavior : MonoBehaviour
                     }
                     else
                     {
-                        scenario.StartNewNode(shotFloor);
-                        didShootFloor = true;
+                        if (distanceFromEnemy < 4f)
+                            scenario.StartNewNode(shotInFoot);
+                        else
+                            scenario.StartNewNode(shotFloor);
                     }
                 }
                 else
@@ -112,7 +113,7 @@ public class PlayerBehavior : MonoBehaviour
                             scenario.warnings++;
                             break;
                         case 3:
-                            if (distanceFromEnemy < 1.5f)
+                            if (distanceFromEnemy < 4f)
                                 scenario.StartNewNode(shotInFoot);
                             else
                                 scenario.StartNewNode(shotFloor);
@@ -121,17 +122,17 @@ public class PlayerBehavior : MonoBehaviour
                             break;
                     }
                 }
-                timeTillWarning -= Time.deltaTime;
+                timeTillWarning -= 0.2f;
             }
 
-            if (!scenario.isTyping() && timeTillWarning < 1f && timeTillWarning > 0f)
+            if (!scenario.isRunning() && timeTillWarning < 1f && timeTillWarning > 0f)
             {
                 timeTillWarning -= Time.deltaTime;
             }
 
             if (timeTillWarning <= 0f)
             {
-                timeTillWarning = 0f;
+                timeTillWarning = 1f;
             }
         }
     }

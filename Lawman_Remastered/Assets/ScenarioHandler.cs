@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
 public class ScenarioHandler : MonoBehaviour
@@ -41,12 +42,15 @@ public class ScenarioHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameOver) Debug.Log("GAME OVER!!!");
+        if (gameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                SceneManager.LoadScene(0);
+        }
         else
         {
             opponentBullets = (int)GetValue("$bullets").AsNumber;
-            Debug.Log(GetValue("$bullets"));
-
+            gameOver = GetValue("$gameOver").AsBool;
 
             if (!isTyping() && timer == 0) timeTillContinue -= Time.deltaTime;
 
@@ -61,7 +65,6 @@ public class ScenarioHandler : MonoBehaviour
             {
                 Continue();
             }
-
         }
     }
 
@@ -81,6 +84,11 @@ public class ScenarioHandler : MonoBehaviour
     public string GetCurrentNode()
     {
         return dr.CurrentNodeName;
+    }
+
+    public bool isRunning()
+    {
+        return dr.IsDialogueRunning;
     }
 
     public bool isTyping()

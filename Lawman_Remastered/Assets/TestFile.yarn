@@ -1,9 +1,10 @@
 title: Intro
 tags: 
 colorID: 0
-position: 168,128
+position: 168,126
 ---
 <<set $bullets to 3>> 
+<<set $gameOver to false>> 
 Alrighty pardner, you think you're such a hot shot?
 Take your paces and we'll see who come out on top.
 
@@ -36,7 +37,7 @@ I won't hang fire for much longer.
 title: PostWarningShot
 tags: 
 colorID: 0
-position: 1087,1057
+position: 1084,1057
 ---
 Made me waste a bullet on the gosh darn floorboards with all your horseplay. 
 Now back up and let's play fair, since I won't be so generous next time.
@@ -58,6 +59,7 @@ Dag gummit, now you went and got yourself hurt on my darn warning shot.
 Ain't gonna be no fun havin' a duel with a fella who can't even walk straight.
 Let's get you up and better for now, but once you're up and walkin' again, we're gonna have a real duel,
 and I won't let your horseplay slide, y'hear me?
+<<set $gameOver to true>>
 ===
 title: OldMonologue
 tags: 
@@ -65,7 +67,8 @@ colorID: 0
 position: 1890,-216
 ---
 You look a little nervous there...
-Y'know, you remind me of the days when I was young and had just started getting into enough trouble to land myself in duels like this.
+Y'know, you remind me of the days when I was young-
+and had just started getting into enough trouble to land myself in duels like this.
 I still remember clear as day what the ol' man I took on had to say before I shot him dead...
 He said somethin like... 
 [[ OldMonologue_One ]]
@@ -106,6 +109,7 @@ position: 1787,978
 ---
 Alright hotshot, I'm not falling for that hogwash twice. 
 I told ya what would happen if ya fooled around like that again didn't I?
+<<set $gameOver to true>>
 ===
 title: OldMonologue_One
 tags: 
@@ -166,7 +170,8 @@ tags:
 colorID: 0
 position: 3305,34
 ---
-Well don't you go talkin' nonsense about a fine woman who isn't here to defend herself. Although I bet my mama could take you down in a duel any day.
+Well don't you go talkin' nonsense about a fine woman who isn't here to defend herself.
+Although I bet my mama could take you down in a duel any day.
 
 [[I'd say your mama's so dull she couldn't even teach a hen to cluck |InsultBanterYoMama]]
 [[Alright, although if she is such a fine woman, then she'd probabaly need a better gun than that there piece a horse dung |InsultBanterGun]]
@@ -265,6 +270,7 @@ colorID: 0
 position: 2483,683
 ---
 I'll pony up the cash, but you better not get anythin' too expensive or we might just end up back where we started.
+<<set $gameOver to true>>
 ===
 title: FinishLog_2
 tags: 
@@ -308,6 +314,7 @@ position: 3353,320
 ---
 Banter is one thing hotshot, but you crossed a line talkin' bout my mama like that. 
 I ain't got no more time for a fella who don't got no manners.
+<<set $gameOver to true>>
 ===
 title: InsultBanterOffRamp
 tags: 
