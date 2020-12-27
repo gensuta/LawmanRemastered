@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 3d414eef961654b3b8eb56231887273e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1670565782046105062
+    second: confidentEnemyShoot_0
+  - first:
+      213: -5495138881701178454
+    second: confidentEnemyShoot_1
+  - first:
+      213: -577243754347660683
+    second: confidentEnemyShoot_2
+  - first:
+      213: -1740754068179942959
+    second: confidentEnemyShoot_3
+  - first:
+      213: -1456787343860332759
+    second: confidentEnemyShoot_4
+  - first:
+      213: -5113717217953287386
+    second: confidentEnemyShoot_5
+  - first:
+      213: 7935408245500986358
+    second: confidentEnemyShoot_6
+  - first:
+      213: -8739134891205604748
+    second: confidentEnemyShoot_7
+  - first:
+      213: -5703132728171169185
+    second: confidentEnemyShoot_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +68,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -63,10 +90,34 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,7 +126,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: confidentEnemyShoot_0
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 145
+        width: 668
+        height: 515
+      alignment: 9
+      pivot: {x: 0.4400428, y: 0.53431016}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6edd7cc4aba0f2710800000000000000
+      internalID: 1670565782046105062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_1
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 142
+        width: 618
+        height: 517
+      alignment: 9
+      pivot: {x: 0.5829642, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa393c43d485db3b0800000000000000
+      internalID: -5495138881701178454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_2
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 123
+        width: 781
+        height: 518
+      alignment: 9
+      pivot: {x: 0.55477035, y: 0.5000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a7b412dd73df7f0800000000000000
+      internalID: -577243754347660683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_3
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 112
+        width: 780
+        height: 528
+      alignment: 9
+      pivot: {x: 0.5412717, y: 0.50468993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d181dcd56997d7e0800000000000000
+      internalID: -1740754068179942959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_4
+      rect:
+        serializedVersion: 2
+        x: 3579
+        y: 123
+        width: 843
+        height: 511
+      alignment: 9
+      pivot: {x: 0.61340463, y: 0.50492316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9278bef01a378cbe0800000000000000
+      internalID: -1456787343860332759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_5
+      rect:
+        serializedVersion: 2
+        x: 4595
+        y: 101
+        width: 734
+        height: 572
+      alignment: 9
+      pivot: {x: 0.60459864, y: 0.4925433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 623781ea84d6809b0800000000000000
+      internalID: -5113717217953287386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_6
+      rect:
+        serializedVersion: 2
+        x: 6245
+        y: 103
+        width: 852
+        height: 560
+      alignment: 9
+      pivot: {x: 0.5564372, y: 0.49999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3cac471cb302e60800000000000000
+      internalID: 7935408245500986358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_7
+      rect:
+        serializedVersion: 2
+        x: 7169
+        y: 105
+        width: 898
+        height: 554
+      alignment: 9
+      pivot: {x: 0.535526, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ac77d4e1b58b680800000000000000
+      internalID: -8739134891205604748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: confidentEnemyShoot_8
+      rect:
+        serializedVersion: 2
+        x: 8079
+        y: 101
+        width: 801
+        height: 558
+      alignment: 9
+      pivot: {x: 0.55476433, y: 0.5000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5af37e00076ad0b0800000000000000
+      internalID: -5703132728171169185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

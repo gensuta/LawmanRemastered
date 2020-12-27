@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: bb6bd093b1a78474ca9bf4074ca0c04f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2560779993329184837
+    second: nervousEnemyShoot_0
+  - first:
+      213: -1378610649317187655
+    second: nervousEnemyShoot_1
+  - first:
+      213: -6142261453604567884
+    second: nervousEnemyShoot_2
+  - first:
+      213: -681015034922640494
+    second: nervousEnemyShoot_3
+  - first:
+      213: 5578333710282257113
+    second: nervousEnemyShoot_4
+  - first:
+      213: 2734318809087847781
+    second: nervousEnemyShoot_5
+  - first:
+      213: -268499846324339839
+    second: nervousEnemyShoot_6
+  - first:
+      213: 1121370766325880480
+    second: nervousEnemyShoot_7
+  - first:
+      213: 8763150191818522818
+    second: nervousEnemyShoot_8
+  - first:
+      213: 8913502059407076655
+    second: nervousEnemyShoot_9
+  - first:
+      213: -3195012469393824444
+    second: nervousEnemyShoot_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +74,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -63,10 +96,34 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,7 +132,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: nervousEnemyShoot_0
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 80
+        width: 678
+        height: 512
+      alignment: 9
+      pivot: {x: 0.44797108, y: 0.5093952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfcfa5e928467cd0800000000000000
+      internalID: -2560779993329184837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_1
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 75
+        width: 635
+        height: 519
+      alignment: 9
+      pivot: {x: 0.5896388, y: 0.49578193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bfd0eb2be03edce0800000000000000
+      internalID: -1378610649317187655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_2
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 69
+        width: 763
+        height: 561
+      alignment: 9
+      pivot: {x: 0.5988926, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4435440cd42caa0800000000000000
+      internalID: -6142261453604567884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_3
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 91
+        width: 782
+        height: 560
+      alignment: 9
+      pivot: {x: 0.6010848, y: 0.4679186}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b5cb41f6c8c86f0800000000000000
+      internalID: -681015034922640494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_4
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 90
+        width: 756
+        height: 561
+      alignment: 9
+      pivot: {x: 0.6185587, y: 0.47628924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f5f744f83a6d40800000000000000
+      internalID: 5578333710282257113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_5
+      rect:
+        serializedVersion: 2
+        x: 4064
+        y: 93
+        width: 796
+        height: 547
+      alignment: 9
+      pivot: {x: 0.6902236, y: 0.49398217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56da956487042f520800000000000000
+      internalID: 2734318809087847781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_6
+      rect:
+        serializedVersion: 2
+        x: 5007
+        y: 69
+        width: 707
+        height: 588
+      alignment: 9
+      pivot: {x: 0.72287107, y: 0.50395924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b3795ffc8164cf0800000000000000
+      internalID: -268499846324339839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_7
+      rect:
+        serializedVersion: 2
+        x: 5912
+        y: 70
+        width: 674
+        height: 656
+      alignment: 9
+      pivot: {x: 0.74833447, y: 0.49685007}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a69c5c45c8ef8f00800000000000000
+      internalID: 1121370766325880480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_8
+      rect:
+        serializedVersion: 2
+        x: 6801
+        y: 73
+        width: 739
+        height: 582
+      alignment: 9
+      pivot: {x: 0.60179573, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c04db89ba6fc9970800000000000000
+      internalID: 8763150191818522818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_9
+      rect:
+        serializedVersion: 2
+        x: 7644
+        y: 83
+        width: 858
+        height: 570
+      alignment: 9
+      pivot: {x: 0.5412831, y: 0.5095602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2deba3b5ee13bb70800000000000000
+      internalID: 8913502059407076655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nervousEnemyShoot_10
+      rect:
+        serializedVersion: 2
+        x: 8544
+        y: 80
+        width: 758
+        height: 575
+      alignment: 9
+      pivot: {x: 0.5995862, y: 0.50345474}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44566d4461909a3d0800000000000000
+      internalID: -3195012469393824444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
