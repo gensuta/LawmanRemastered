@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -30,9 +31,10 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] AudioClip shot, footStep,footStep2,missShot;
     float timeTillStep = 0.2f;
 
-    [SerializeField] GameObject blamVisual;
+    public GameObject blamVisual;
     bool didLeft;
-
+    float pauseTimer;
+    bool wentBack;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +46,7 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
 
-        if (!scenario.gameOver)
+        if (!scenario.gameOver && !scenario.pause)
         {
             distanceFromEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 
@@ -130,8 +132,10 @@ public class PlayerBehavior : MonoBehaviour
             {
                 if (distanceFromEnemy < warningDist)
                 {
-                    if(scenario.GetCurrentNode() != warningShot1 && scenario.GetCurrentNode() != warningShot2 && scenario.GetCurrentNode() != warningShot3)
-                    scenario.nodeBeforeWarning = scenario.GetCurrentNode();
+                    if (scenario.GetCurrentNode() != warningShot1 && scenario.GetCurrentNode() != null && scenario.GetCurrentNode() != warningShot2 && scenario.GetCurrentNode() != warningShot3)
+                    {
+                        scenario.nodeBeforeWarning = scenario.GetCurrentNode();
+                    }
                     if (isHoldingGun)
                     {
                         if (!warnedAboutGun)
@@ -149,7 +153,7 @@ public class PlayerBehavior : MonoBehaviour
 
                             enemyAnim.Play("enemyNervousFire");
                             anim.Play("playerShot");
-                            AudioSource.PlayClipAtPoint(missShot, transform.position, 0.5f);
+                            AudioSource.PlayClipAtPoint(missShot, transform.position, 1f);
                             timeTillShot = 2f;
                             wasShot = true;
                         }
@@ -172,22 +176,31 @@ public class PlayerBehavior : MonoBehaviour
                                 break;
                             case 3:
                                 enemyAnim.Play("enemyNervousFire");
-                                anim.Play("playerShot");
-                                AudioSource.PlayClipAtPoint(missShot, transform.position, 0.5f);
+                                AudioSource.PlayClipAtPoint(missShot, transform.position, 1f);
                                 timeTillShot = 2f;
                                 scenario.warnings++;
-                                wasShot = true;
                                 break;
                         }
                     }
                 }
                 else
                 {
-                    if(scenario.warnings > 0 && !string.IsNullOrEmpty(scenario.nodeBeforeWarning) )
+                    if (scenario.warnings > 0 && !string.IsNullOrEmpty(scenario.nodeBeforeWarning))
                     {
-                        scenario.StartNewNode(scenario.nodeBeforeWarning);
+                        if (!wentBack)
+                        {
+                            scenario.StartNewNode(scenario.nodeBeforeWarning);
+                            wentBack = true;
+                        }
+                        else
+                        {
+                            timeTillWarning = 1f;
+                            return;
+                        }
                         //scenario.nodeBeforeWarning = "";
                     }
+                    else
+                        return;
                    
                 }
                 timeTillWarning -= 0.2f;
@@ -214,6 +227,7 @@ public class PlayerBehavior : MonoBehaviour
                     if (distanceFromEnemy < 6f)
                     {
                         scenario.StartNewNode(shotInFoot);
+                        anim.Play("playerShot");
                         wasShot = true;
                     }
                     else
@@ -227,18 +241,40 @@ public class PlayerBehavior : MonoBehaviour
         }
         else
         {
-            if (scenario.saidBlam || scenario.saidYoMama)
+            if (scenario.gameOver)
             {
-                enemyAnim.Play("enemyConfidentFire");
-                anim.Play("playerShot");
-                AudioSource.PlayClipAtPoint(shot, transform.position, 0.5f);
-                wasShot = true;
-            }
-            else
-                if (!scenario.isTyping())
+                if (!wasShot)
                 {
-                    enemyAnim.Play("enemyIdle");
+                    if (scenario.saidBlam || scenario.saidYoMama || scenario.seenAll)
+                    {
+                        enemyAnim.Play("enemyConfidentFire");
+                        anim.Play("playerShot");
+                        AudioSource.PlayClipAtPoint(shot, transform.position, 1f);
+                        wasShot = true;
+                    }
+                    else
+                        if (!scenario.isTyping())
+                    {
+                        enemyAnim.Play("enemyIdle");
+                    }
                 }
+            }
+            if(scenario.pause)
+            {
+                if(pauseTimer == 0f)
+                {
+                    enemyAnim.Play("enemyConfidentFire");
+                    AudioSource.PlayClipAtPoint(shot, transform.position, 1f);
+                   
+                }
+               
+                if (pauseTimer > 0.75f)
+                {
+                    pauseTimer = 0f;
+                    scenario.pause = false;
+                }
+                pauseTimer += Time.deltaTime;
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class ScenarioHandler : MonoBehaviour
     InMemoryVariableStorage yarnVars;
 
     [SerializeField]
-    float timeTillContinue, maxTime, timeTillPostIntro, timer;
+    float timeTillContinue, maxTime, timeTillPostIntro;
 
     public bool isOptionsVisible;
 
@@ -26,7 +26,7 @@ public class ScenarioHandler : MonoBehaviour
     [SerializeField] string intro;
     public string introFinal, startMonologue, startBanter, startDrink, startSob, yoMamaStart, noMoreBullets,noMoreDialogue,fancyFootworks, farDialogue,closeDialogue;
 
-    public bool gameOver;
+    public bool gameOver, seenAll;
     [SerializeField] bool _isTyping;
 
     [SerializeField] GameObject endPanel;
@@ -35,7 +35,11 @@ public class ScenarioHandler : MonoBehaviour
     bool shouldChooseRand;
     public string nodeBeforeWarning;
 
-    bool didBanter, didMonologue, didSob, didDrink;
+    bool didBanter, didMonologue, didSob, didDrink, didFancy, didFar;
+
+    float timeSinceLastNode = 0f;
+
+    public bool pause; //for a shot
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,7 @@ public class ScenarioHandler : MonoBehaviour
         yarnVars = GetComponent<InMemoryVariableStorage>();
 
         dr = FindObjectOfType<DialogueRunner>();
+        opponentBullets = 3;
     }
 
 
@@ -57,33 +62,45 @@ public class ScenarioHandler : MonoBehaviour
 
             endPanel.SetActive(true);
         }
-        else
+        else if (!gameOver && ! pause)
         {
-            opponentBullets = (int)GetValue("$bullets").AsNumber;
+            if((int)GetValue("$bullets").AsNumber != opponentBullets)
+            {
+                pause = true;
+                opponentBullets = (int)GetValue("$bullets").AsNumber;
+            }
+            
             gameOver = GetValue("$gameOver").AsBool;
-            shouldChooseRand = GetValue("$endNode").AsBool;
 
-            if (!isTyping() && timer == 0) timeTillContinue -= Time.deltaTime;
 
+            if (!isTyping())
+            {
+                timeTillContinue -= Time.deltaTime;
+                if(!shouldChooseRand)
+                {
+                    timeSinceLastNode += Time.deltaTime;
+                    if (timeSinceLastNode > timeTillPostIntro)
+                        shouldChooseRand = true;
+                }
+            }
+            else
+            {
+                timeTillContinue = 0.5f;
+                timeSinceLastNode = 0f;
+            }
             if (GetCurrentNode() == introFinal) startedIntro = true;
-            if (startedIntro && !isTyping()) timer += Time.deltaTime;
 
             if (!dr.IsDialogueRunning) _isTyping = false;
 
-            if (timeTillContinue <= 0 && !isOptionsVisible)
+            if (timeTillContinue <= 0 && !isOptionsVisible && GetCurrentNode() != null)
             {
                 Continue();
             }
 
-            if (timer > timeTillPostIntro) 
-                ChooseRandDialogue();
-
             if(shouldChooseRand && !isTyping())
             {
-                startedIntro = true;
 
-                var endBool = new Yarn.Value(true);
-                SetValue("endNode", endBool);
+                ChooseRandDialogue();
                 shouldChooseRand = false;
             }
         }
@@ -91,8 +108,16 @@ public class ScenarioHandler : MonoBehaviour
 
     public void ChooseRandDialogue()
     {
-        timer = 0;
+        timeSinceLastNode = 0f;
         startedIntro = false;
+
+        if(didMonologue)
+        {
+            saidBlam = false; // you survived the monologue
+            startedMonologue = false;
+            player.blamVisual.SetActive(false);
+        }
+
         if (opponentBullets == 0)
         {
             StartNewNode(noMoreBullets);
@@ -103,14 +128,16 @@ public class ScenarioHandler : MonoBehaviour
         {
             StartNewNode(closeDialogue);
         }
-        else if (player.distanceFromEnemy >25)
+        else if (player.distanceFromEnemy >20 & !didFar)
         {
             StartNewNode(farDialogue);
+            didFar = true;
         }
 
-        else if (numPresses > 7)
+        else if (numPresses > 7 && !didFancy)
         {
             StartNewNode(fancyFootworks);
+            didFancy = true;
         }
 
         else
@@ -130,7 +157,7 @@ public class ScenarioHandler : MonoBehaviour
                     else if (!didDrink)
                     {
                         StartNewNode(startDrink);
-                        didMonologue = true;
+                        didDrink = true;
                         return;
                     }
                     else if (!didBanter)
@@ -142,6 +169,7 @@ public class ScenarioHandler : MonoBehaviour
                     else
                     {
                         StartNewNode(noMoreDialogue);
+                        seenAll = true;
                     }
                 }
                 else
@@ -164,7 +192,7 @@ public class ScenarioHandler : MonoBehaviour
                     else if (!didDrink)
                     {
                         StartNewNode(startDrink);
-                        didMonologue = true;
+                        didDrink = true;
                         return;
                     }
                     else if(!didSob)
@@ -176,6 +204,7 @@ public class ScenarioHandler : MonoBehaviour
                     else
                     {
                         StartNewNode(noMoreDialogue);
+                        seenAll = true;
                     }
                 }
                 else
@@ -209,6 +238,7 @@ public class ScenarioHandler : MonoBehaviour
                     else
                     {
                         StartNewNode(noMoreDialogue);
+                        seenAll = true;
                     }
                 }
                 else
@@ -242,6 +272,7 @@ public class ScenarioHandler : MonoBehaviour
                     else
                     {
                         StartNewNode(noMoreDialogue);
+                        seenAll = true;
                     }
                 }
                 else
