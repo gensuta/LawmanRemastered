@@ -108,7 +108,7 @@ public class ScenarioHandler : MonoBehaviour
             StartNewNode(farDialogue);
         }
 
-        else if (numPresses > 5)
+        else if (numPresses > 7)
         {
             StartNewNode(fancyFootworks);
         }

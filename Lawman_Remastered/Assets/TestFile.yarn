@@ -380,12 +380,13 @@ Well, I guess that's why I've been on such a tear with all these duels.
 title: SobStoryInquire
 tags: 
 colorID: 0
-position: 4688,-611
+position: 4686,-611
 ---
 Well, around a year ago, durin one of my duels, the lass I was into at the time was watchin. 
 I took my eyes off the fella I was duelin for just a split second, and that's when he pounced. He tried to take me down there and then.
 But the fella had such poor aim that he ended up hittin one of the lights in the saloon and it ricocheted and hit that very lass.
 Ever since I've been determined to take down hotshots like you.
+<<set $endNode to true>>
 ===
 title: SobStoryEngage
 tags: 
