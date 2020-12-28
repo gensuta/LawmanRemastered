@@ -18,16 +18,24 @@ public class ScenarioHandler : MonoBehaviour
     [Space]
     [Header("Vars for story")]
     public int warnings;
-    public int opponentBullets = 3;
+    public int numPresses,opponentBullets = 3;
     public bool saidYoMama, saidBlam,startedIntro,startedMonologue;
 
     [Space]
     [Header("Node Names")]
     [SerializeField] string intro;
-    public string introFinal, startMonologue, startBanter, yoMamaStart;
+    public string introFinal, startMonologue, startBanter, startDrink, startSob, yoMamaStart, noMoreBullets,noMoreDialogue,fancyFootworks, farDialogue,closeDialogue;
 
     public bool gameOver;
     [SerializeField] bool _isTyping;
+
+    [SerializeField] GameObject endPanel;
+    [SerializeField] PlayerBehavior player;
+
+    bool shouldChooseRand;
+    public string nodeBeforeWarning;
+
+    bool didBanter, didMonologue, didSob, didDrink;
 
     // Start is called before the first frame update
     void Start()
@@ -46,24 +54,37 @@ public class ScenarioHandler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
                 SceneManager.LoadScene(0);
+
+            endPanel.SetActive(true);
         }
         else
         {
             opponentBullets = (int)GetValue("$bullets").AsNumber;
             gameOver = GetValue("$gameOver").AsBool;
+            shouldChooseRand = GetValue("$endNode").AsBool;
 
             if (!isTyping() && timer == 0) timeTillContinue -= Time.deltaTime;
 
             if (GetCurrentNode() == introFinal) startedIntro = true;
             if (startedIntro && !isTyping()) timer += Time.deltaTime;
 
-            if (timer > timeTillPostIntro) ChooseRandDialogue();
-
             if (!dr.IsDialogueRunning) _isTyping = false;
 
             if (timeTillContinue <= 0 && !isOptionsVisible)
             {
                 Continue();
+            }
+
+            if (timer > timeTillPostIntro) 
+                ChooseRandDialogue();
+
+            if(shouldChooseRand && !isTyping())
+            {
+                startedIntro = true;
+
+                var endBool = new Yarn.Value(true);
+                SetValue("endNode", endBool);
+                shouldChooseRand = false;
             }
         }
     }
@@ -72,13 +93,165 @@ public class ScenarioHandler : MonoBehaviour
     {
         timer = 0;
         startedIntro = false;
-        int rand = Random.Range(0, 2);
-        if (rand == 0)
+        if (opponentBullets == 0)
         {
-            startedMonologue = true;
-            StartNewNode(startMonologue);
+            StartNewNode(noMoreBullets);
+            return;
         }
-        if (rand == 1) StartNewNode(startBanter);
+
+        if (player.distanceFromEnemy < player.warningDist)
+        {
+            StartNewNode(closeDialogue);
+        }
+        else if (player.distanceFromEnemy >25)
+        {
+            StartNewNode(farDialogue);
+        }
+
+        else if (numPresses > 5)
+        {
+            StartNewNode(fancyFootworks);
+        }
+
+        else
+        {
+
+            int rand = Random.Range(0, 4);
+            if (rand == 0)
+            {
+                if (didMonologue)
+                {
+                    if (!didSob)
+                    {
+                        StartNewNode(startSob);
+                        didSob = true;
+                        return;
+                    }
+                    else if (!didDrink)
+                    {
+                        StartNewNode(startDrink);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if (!didBanter)
+                    {
+                        StartNewNode(startBanter);
+                        didBanter = true;
+                        return;
+                    }
+                    else
+                    {
+                        StartNewNode(noMoreDialogue);
+                    }
+                }
+                else
+                {
+                    startedMonologue = true;
+                    StartNewNode(startMonologue);
+                    didMonologue = true;
+                }
+            }
+            if (rand == 1)
+            {
+                if (didBanter)
+                {
+                    if (!didMonologue)
+                    {
+                        StartNewNode(startMonologue);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if (!didDrink)
+                    {
+                        StartNewNode(startDrink);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if(!didSob)
+                    {
+                        StartNewNode(startSob);
+                        didSob = true;
+                        return;
+                    }
+                    else
+                    {
+                        StartNewNode(noMoreDialogue);
+                    }
+                }
+                else
+                {
+                    StartNewNode(startBanter);
+                    didBanter = true;
+                }
+            }
+            if (rand == 2)
+            {
+                if (didDrink)
+                {
+                    if (!didMonologue)
+                    {
+                        StartNewNode(startMonologue);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if (!didSob)
+                    {
+                        StartNewNode(startSob);
+                        didSob = true;
+                        return;
+                    }
+                    else if (!didBanter)
+                    {
+                        StartNewNode(startBanter);
+                        didBanter = true;
+                        return;
+                    }
+                    else
+                    {
+                        StartNewNode(noMoreDialogue);
+                    }
+                }
+                else
+                {
+                    StartNewNode(startDrink);
+                    didDrink = true;
+                }
+            }
+            if (rand == 3)
+            {
+                if (didSob)
+                {
+                    if (!didMonologue)
+                    {
+                        StartNewNode(startMonologue);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if (!didDrink)
+                    {
+                        StartNewNode(startDrink);
+                        didMonologue = true;
+                        return;
+                    }
+                    else if (!didBanter)
+                    {
+                        StartNewNode(startBanter);
+                        didBanter = true;
+                        return;
+                    }
+                    else
+                    {
+                        StartNewNode(noMoreDialogue);
+                    }
+                }
+                else
+                {
+                    StartNewNode(startSob);
+                    didSob = true;
+                }
+
+            }
+        }
     }
 
     public string GetCurrentNode()
@@ -115,13 +288,15 @@ public class ScenarioHandler : MonoBehaviour
     void Continue()
     {
         OnStart();
+
         dr.Dialogue.Continue();
         ResetTimer();
 
-        if(!saidYoMama && GetCurrentNode() == yoMamaStart)
+        if (!saidYoMama && GetCurrentNode() == yoMamaStart)
         {
             saidYoMama = true;
         }
+
     }
 
     public void SetOptionsVisible(bool b)

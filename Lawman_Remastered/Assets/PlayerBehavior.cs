@@ -12,12 +12,12 @@ public class PlayerBehavior : MonoBehaviour
 
     ScenarioHandler scenario;
 
-    [SerializeField] int warningDist;
+    public int warningDist;
 
     [Space]
     [Header("Node Names")]
     [SerializeField] string warningShot1;
-    public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamEnd;
+    public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamTwo, blamEnd,shotBcGun;
 
     [SerializeField] float timeTillShot, timeTillWarning = 1f;
 
@@ -25,8 +25,13 @@ public class PlayerBehavior : MonoBehaviour
 
     [Header("Floats")]
     [SerializeField] float speed;
-    [SerializeField] float distanceFromEnemy;
+    public float distanceFromEnemy;
 
+    [SerializeField] AudioClip shot, footStep,footStep2,missShot;
+    float timeTillStep = 0.2f;
+
+    [SerializeField] GameObject blamVisual;
+    bool didLeft;
 
 
     // Start is called before the first frame update
@@ -57,16 +62,27 @@ public class PlayerBehavior : MonoBehaviour
                 isHoldingGun = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.B) && scenario.startedMonologue)
+            if(scenario.GetCurrentNode() == blamEnd)
             {
-                if (!scenario.saidBlam)
+                scenario.saidBlam = false; // you survived the monologue
+                scenario.startedMonologue = false; 
+                blamVisual.SetActive(false);
+
+            }
+            if (scenario.startedMonologue)
+            {
+                blamVisual.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.B))
                 {
-                    scenario.StartNewNode(blamOne);
-                    scenario.saidBlam = true;
-                }
-                else
-                {
-                    scenario.StartNewNode(blamEnd);
+                    if (!scenario.saidBlam)
+                    {
+                        scenario.StartNewNode(blamOne);
+                        scenario.saidBlam = true;
+                    }
+                    else
+                    {
+                        scenario.StartNewNode(blamTwo);
+                    }
                 }
             }
 
@@ -87,6 +103,11 @@ public class PlayerBehavior : MonoBehaviour
 
                 if (!wasShot)
                 {
+                    if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+                    {
+                        scenario.numPresses++;
+                    }
+
                     if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                     {
                         anim.Play("playerShuffle");
@@ -105,50 +126,69 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
 
-            if (distanceFromEnemy < warningDist && timeTillWarning == 1f && !didShootFloor && scenario.isTyping())
+            if (timeTillWarning == 1f && !scenario.isTyping())
             {
-                if (isHoldingGun)
+                if (distanceFromEnemy < warningDist)
                 {
-                    if (!warnedAboutGun)
+                    if(scenario.GetCurrentNode() != warningShot1 && scenario.GetCurrentNode() != warningShot2 && scenario.GetCurrentNode() != warningShot3)
+                    scenario.nodeBeforeWarning = scenario.GetCurrentNode();
+                    if (isHoldingGun)
                     {
-                        scenario.StartNewNode(handOnGun);
-                        warnedAboutGun = true;
-                    }
-                    else
-                    {
-                        if (distanceFromEnemy < 6f)
+                        if (!warnedAboutGun)
                         {
-                            scenario.StartNewNode(shotInFoot);
-                            wasShot = true;
+                            scenario.StartNewNode(handOnGun);
+                            warnedAboutGun = true;
                         }
                         else
-                            scenario.StartNewNode(shotFloor);
+                        {
+                            if (distanceFromEnemy < 6f)
+                                scenario.StartNewNode(shotInFoot);
+
+                            else
+                                scenario.StartNewNode(shotBcGun);
+
+                            enemyAnim.Play("enemyNervousFire");
+                            anim.Play("playerShot");
+                            AudioSource.PlayClipAtPoint(missShot, transform.position, 0.5f);
+                            timeTillShot = 2f;
+                            wasShot = true;
+                        }
+                    }
+                    else if (!didShootFloor)
+                    {
+                        switch (scenario.warnings)
+                        {
+                            case 0:
+                                scenario.StartNewNode(warningShot1);
+                                scenario.warnings++;
+                                break;
+                            case 1:
+                                scenario.StartNewNode(warningShot2);
+                                scenario.warnings++;
+                                break;
+                            case 2:
+                                scenario.StartNewNode(warningShot3);
+                                scenario.warnings++;
+                                break;
+                            case 3:
+                                enemyAnim.Play("enemyNervousFire");
+                                anim.Play("playerShot");
+                                AudioSource.PlayClipAtPoint(missShot, transform.position, 0.5f);
+                                timeTillShot = 2f;
+                                scenario.warnings++;
+                                wasShot = true;
+                                break;
+                        }
                     }
                 }
                 else
                 {
-                    switch (scenario.warnings)
+                    if(scenario.warnings > 0 && !string.IsNullOrEmpty(scenario.nodeBeforeWarning) )
                     {
-                        case 0:
-                            scenario.StartNewNode(warningShot1);
-                            scenario.warnings++;
-                            break;
-                        case 1:
-                            scenario.StartNewNode(warningShot2);
-                            scenario.warnings++;
-                            break;
-                        case 2:
-                            scenario.StartNewNode(warningShot3);
-                            scenario.warnings++;
-                            break;
-                        case 3:
-                            enemyAnim.Play("enemyNervousFire");
-                            anim.Play("playerShot");
-                            timeTillShot = 2f;
-                            scenario.warnings++;
-                            wasShot = true;
-                            break;
+                        scenario.StartNewNode(scenario.nodeBeforeWarning);
+                        //scenario.nodeBeforeWarning = "";
                     }
+                   
                 }
                 timeTillWarning -= 0.2f;
             }
@@ -191,6 +231,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 enemyAnim.Play("enemyConfidentFire");
                 anim.Play("playerShot");
+                AudioSource.PlayClipAtPoint(shot, transform.position, 0.5f);
                 wasShot = true;
             }
             else
@@ -204,5 +245,16 @@ public class PlayerBehavior : MonoBehaviour
     void Move(Vector2 dir)
     {
         transform.position += new Vector3(dir.x * speed, dir.y * speed, 0);
+        if (timeTillStep > 0f) timeTillStep -= Time.deltaTime;
+        else
+        {
+            if(didLeft)
+                AudioSource.PlayClipAtPoint(footStep, transform.position, 0.5f);
+            else
+                AudioSource.PlayClipAtPoint(footStep2, transform.position, 0.5f);
+
+            timeTillStep = 0.2f;
+        }
+        
     }
 }
