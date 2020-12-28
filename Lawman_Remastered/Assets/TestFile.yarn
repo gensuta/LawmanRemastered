@@ -1,12 +1,12 @@
 title: Intro
 tags: 
 colorID: 0
-position: 168,126
+position: 167,126
 ---
 <<set $bullets to 3>> 
 <<set $gameOver to false>> 
 Alrighty pardner, you think you're such a hot shot?
-Take your paces and we'll see who come out on top.
+Take your paces and we'll see who'll come out on top.
 
 [[We doin' this here in the tavern? |Intro2]]
 [[Can ya give a fella just a second? |Intro3]]
@@ -22,7 +22,7 @@ I thought we were tryin' to have a proper duel here!
 title: WarningShot_Pre2
 tags: 
 colorID: 0
-position: 966,296
+position: 965,294
 ---
 Now you better back up there hotshot.
 If you don't play by the rules here-
@@ -31,7 +31,7 @@ I'm gonna have to put a bullet through you in before we even get to having a rea
 title: WarningShot_Pre3
 tags: 
 colorID: 0
-position: 959,525
+position: 958,522
 ---
 Don't think I'm just jokin' around here pardner. 
 I won't hang fire for much longer.
@@ -74,13 +74,13 @@ You look a little nervous there...
 y'know,
 you remind me of the days when I was young and had just started getting into enough trouble to land myself in duels like this.
 I still remember clear as day what the ol' man I took on had to say before I shot him dead...
-He said somethin like...
+He said somethin' like...
 [[ OldMonologue_One ]]
 ===
 title: BLAM!
 tags: 
 colorID: 0
-position: 1702,308
+position: 1701,307
 ---
 AH!
 <<set $bullets to ($bullets -1) >>
@@ -90,7 +90,7 @@ Makin' me waste a gosh dang bullet... bunch'a hogwash that is.
 Now do you wanna listen to the rest of my story or get back in our proper places.
 
 [[I'll hear you out this time... |ContinueLog]]
-[[I'm in no mood to keep listenin' to all that nonsense of yours pardner |ContinueDuel]]
+[[I'm in no mood to keep listenin' to all that nonsense of yours pardner. |ContinueDuel]]
 ===
 title: FinishLog
 tags: 
@@ -106,12 +106,12 @@ If you wanna take a shot now's your chance, but if you're down on the idea of ki
 I wouldn't be opposed to just sittin' down and gettin roostered together.
 
 [[Bartender! |DrunkEnd]]
-[[I don't think we're finished yet |FinishLog_2]]
+[[I don't think we're finished yet... |FinishLog_2]]
 ===
 title: SecondBlam
 tags: 
 colorID: 0
-position: 1780,951
+position: 1780,952
 ---
 Alright hotshot, I'm not falling for that hogwash twice. 
 I told ya what would happen if ya fooled around like that again didn't I?
@@ -179,8 +179,8 @@ position: 3305,34
 Well don't you go talkin' nonsense about a fine woman who isn't here to defend herself.
 Although I bet my mama could take you down in a duel any day.
 
-[[I'd say your mama's so dull she couldn't even teach a hen to cluck |InsultBanterYoMama]]
-[[Alright, although if she is such a fine woman, then she'd probabaly need a better gun than that there piece a horse dung |InsultBanterGun]]
+[[I'd say your mama's so dull she couldn't even teach a hen to cluck. |InsultBanterYoMama]]
+[[Alright, although if she is such a fine woman, then she'd probabaly need a better gun than that there piece a horse dung. |InsultBanterGun]]
 ===
 title: InsultBanterVoice
 tags: 
@@ -191,19 +191,19 @@ Oh well then aren't you just askin' to hear it some more then...
 and I mean, hell, if you don't like it you could always pull out that gun of yours...
 but I don't think you're brave enough to do that hotshot.
 
-[[I'd rather be a coward than whatever brash lunkhead your mama raised you to be |InsultBanterMamaProvoke]]
-[[If you really wanna see my skill with my pistol, I can take that ugly hat right off your pretty little head |InsultBanterHat]]
+[[I'd rather be a coward than whatever brash lunkhead your mama raised you to be. |InsultBanterMamaProvoke]]
+[[If you really wanna see my skill with my pistol, I can take that ugly hat right off your pretty little head. |InsultBanterHat]]
 ===
 title: InsultBanterChill
 tags: 
 colorID: 0
-position: 3278,-471
+position: 3278,-473
 ---
 Hey, hey, hotshot... a duel aint no fun if there aint no banter.
 C'mon, take your best shot at me, I promise, I won't cry.
 
-[[I'm not sure I wanna keep talkin if I'm gonna have to listen to your creaky voice |InsultBanterVoice]]
-[[A little banter might be nice but I don't know if I can keep lookin' at that hideous 'stache of yours |InsultBanterLooks]]
+[[I'm not sure I wanna keep talkin if I'm gonna have to listen to your creaky voice. |InsultBanterVoice]]
+[[A little banter might be nice but I don't know if I can keep lookin' at that hideous 'stache of yours. |InsultBanterLooks]]
 ===
 title: InsultBanterStart
 tags: 
@@ -211,21 +211,21 @@ colorID: 0
 position: 3294,-894
 ---
 You doin' alright pardner? 
-I know I keep callin' you hotshot, but those bags under your eyes suggest that you aint feelin' too hot youself.
+I know I keep callin' you hotshot, but those bags under your eyes suggest that you ain't feelin' too hot youself.
 
-[[You don't need to worry 'bout me, I'm doin' just fine |InsultBanterChill]]
-[[Well your mug aint doing too much for you either |InsultBanterLooks]]
+[[You don't need to worry 'bout me, I'm doin' just fine. |InsultBanterChill]]
+[[Well your mug aint doing too much for you either. |InsultBanterLooks]]
 ===
 title: InsultBanterLooks
 tags: 
 colorID: 0
-position: 3833,-721
+position: 3831,-723
 ---
 Aw, I must say it hurts that a handsome fella like you aint into my beautiful face. 
 But oh well, what I lack in beauty I make up for in pure style.
 
-[[If you want style, I can help by shootin' that piece of junk right of that heaf of yours |InsultBanterHat]]
-[[Well your little partner in crime there ain't helpin whatver your style is |InsultBanterGun]]
+[[If you want style, I can help by shootin' that piece of junk right of that head of yours. |InsultBanterHat]]
+[[Well your little partner in crime there ain't helpin whatver your style is. |InsultBanterGun]]
 ===
 title: IntroSemiFinal1
 tags: 
@@ -252,7 +252,7 @@ So unless you've got no bullets left there in that gun of yours, I say it's abou
 title: IntroFinal
 tags: 
 colorID: 0
-position: 197,942
+position: 193,940
 ---
 I don't want to hear no excuses pardner. 
 Get your legs moving and let's get this thing going.
@@ -296,7 +296,7 @@ Alright, let's get back settled and I can get this over and done with.
 title: InsultBanterHat
 tags: 
 colorID: 0
-position: 3945,-299
+position: 3944,-301
 ---
 Oh you got an issue with my here hat pardner? 
 Well, I can go tit for tat on that one and take off that hair case of yours.
@@ -331,21 +331,21 @@ I ain't got no more time for a fella who don't got no manners.
 title: InsultBanterOffRamp
 tags: 
 colorID: 0
-position: 4026,328
+position: 4025,326
 ---
 Well now that I've already got my hand on the trigger, I'm not really in the mood to hear any more insults outta you,
-so I don't think we need to piddle around like this much longer.
+so I don't think we gotta piddle around like this much longer.
 << set $endNode to true>>
 ===
 title: Intro2
 tags: 
 colorID: 0
-position: -194,348
+position: -196,346
 ---
 Well I'm feelin' a little antsy.
-No reason to walk all the way outside when we've got some good space here, aint that right?
+No reason to walk all the way outside when we've got some good space here, ain't that right?
 [[I guess... |IntroSemiFinal1]]
-[[Let's not disturb all the other patrons |IntroSemiFinal2]]
+[[Let's not disturb all the other patrons. |IntroSemiFinal2]]
 ===
 title: Intro3
 tags: 
@@ -353,7 +353,7 @@ colorID: 0
 position: 397,473
 ---
 No can do. We're doin' this here and now pardner. 
-If you aint ready, well, that'll make things easier for me. 
+If you ain't ready, well, that'll make things easier for me. 
 I've already taken three duels today so both my ol' trusty six shooter and I are warmed up and ready to go.
 Unless you've got no bullets left there in that gun of yours, I say it's about time we take our paces.
 [[Well actually... |IntroFinal]]
@@ -361,7 +361,7 @@ Unless you've got no bullets left there in that gun of yours, I say it's about t
 title: ShotDead
 tags: 
 colorID: 0
-position: 1251,863
+position: 1250,860
 ---
 Think you're slick reachin' for your gun like that, but you ain't faster than me pardner.
 <<set $gameOver to true>>
@@ -374,24 +374,26 @@ position: 4826,-893
 Y'know, they say there's nothin' scarier than a fella with nothin' t'a lose. 
 Well, I guess that's why I've been on such a tear with all these duels.
 
-[[What's this all about |SobStoryInquire]]
-[[Don't start thinkin' that you're the only one who's already lost it all |SobStoryEngage]]
+[[What's this all about? |SobStoryInquire]]
+[[Don't start thinkin' that you're the only one who's already lost it all. |SobStoryEngage]]
 ===
 title: SobStoryInquire
 tags: 
 colorID: 0
-position: 4686,-611
+position: 4682,-618
 ---
 Well, around a year ago, durin one of my duels, the lass I was into at the time was watchin. 
 I took my eyes off the fella I was duelin for just a split second, and that's when he pounced. He tried to take me down there and then.
 But the fella had such poor aim that he ended up hittin one of the lights in the saloon and it ricocheted and hit that very lass.
 Ever since I've been determined to take down hotshots like you.
-<<set $endNode to true>>
+
+[[Well I lost my parents to some bandits before I was even ten years a'age. Had to practically raise myself. |SobStoryParents]]
+[[Y'know I my girl in the exact same way... funny how fate brings us together. |SobStorySame]]
 ===
 title: SobStoryEngage
 tags: 
 colorID: 0
-position: 5099,-647
+position: 5094,-650
 ---
 Oh yeah?
 I lost the lass I was into from a spare bullet from a duel I was apart of.
@@ -399,12 +401,12 @@ That's why I'm here today takin' down hotshots like you, to make sure nothin lik
 What could have possibly happened to you?
 
 [[Lost my parents to some bandits before I was even ten years a'age. Had to practically raise myself. |SobStoryParents]]
-[[Lost my girl in the exact same way... funny how fate brings us together |SobStorySame]]
+[[Lost my girl in the exact same way... funny how fate brings us together. |SobStorySame]]
 ===
 title: SobStoryParents
 tags: 
 colorID: 0
-position: 5029,-272
+position: 5027,-273
 ---
 Well that does hurt to hear...
 y'know... 
@@ -413,8 +415,8 @@ My father was a no good drifter.
 Didn't ever really get to know him, and don't really got any intrest in doin' so now. 
 Although maybe it'd be nice to have a duel like this with him.
 
-[[Well I also recently lost my stallion... Don't know if I'll ever be able to find another |SobStoryHorse]]
-[[Actually, just before this duel I barely made it out of a ragin' fire. Made it out by the skin of my teeth |SobStoryBurn]]
+[[Well I also recently lost my stallion... Don't know if I'll ever be able to find another. |SobStoryHorse]]
+[[Actually, just before this duel I barely made it out of a ragin' fire. Made it out by the skin of my teeth. |SobStoryBurn]]
 ===
 title: SobStorySame
 tags: 
@@ -426,7 +428,7 @@ You better watch your darn mouth before I lose my temper and pull this here trig
 You better have somethin' to say other than that.
 
 [[Well I did lose my parents to some bandits before I was even ten years a'age. Had to practically raise myself. |SobStoryParents]]
-[[Well I ain't got another story for ya pal |SobStoryDisengage]]
+[[Well I ain't got another story for ya pal. |SobStoryDisengage]]
 ===
 title: SobStoryHorse
 tags: 
@@ -438,20 +440,20 @@ I don't know how I could live without my fine stallion by my side.
 Almost ran away one day and scared me half to death, I'll tell you that.
 If it ain't too painful of a tale, how'd you lose yours?
 
-[[Got some scratches running through some rough patches of wilderness. She got sick and it was too late from there |SobStoryEnding]]
-[[Got shot'n all four legs. Fell to the ground and there wasn't much else I could do 'bout it |SobStoryHorseBad]]
+[[Got some scratches running through some rough patches of wilderness. She got sick and it was too late from there. |SobStoryEnding]]
+[[Got shot'n all four legs. Fell to the ground and there wasn't much else I could do 'bout it. |SobStoryHorseBad]]
 ===
 title: SobStoryBurn
 tags: 
 colorID: 0
-position: 5150,120
+position: 5149,117
 ---
 Oh I'm not too sure about that one pardner...
 you look like you ain't barely got a scratch on ya.
 Where was this ragin' fire that almost got ya?
 
-[[Just a town over, I was sleepin' in the tavern, and woke up to the sounds of screams of the other folks |SobStoryBurnSlide]]
-[[In the jailhouse just a little bit ago. Managed to get myself out in the nick of time |SobStoryBurnBad]]
+[[Just a town over, I was sleepin' in the tavern, and woke up to the sounds of screams of the other folks. |SobStoryBurnSlide]]
+[[In the jailhouse just a little bit ago. Managed to get myself out in the nick of time. |SobStoryBurnBad]]
 ===
 title: SobStoryDisengage
 tags: 
@@ -517,27 +519,27 @@ but if ya just wanna grab a drink and take it easy, well... I wouldn't say no to
 title: FancyFootwork
 tags: 
 colorID: 0
-position: 5907,-843
+position: 5905,-846
 ---
 Looks like you've got some fancy footwork there hotshot.
-Although, if you're hopin' to dodge a bullet, then I think you could use a bit more work.
+Although, if you're hopin' to dodge a bullet, I think you could use a bit more work.
 ===
 title: DrinkTalk
 tags: 
 colorID: 0
 position: 6190,-732
 ---
-Standin' here, I'm startin' to get a little thirsy.
+Standin' here, I'm startin' to get a little thirsty.
 A drink doesn't sound too bad after this...
 What kinda drink do you get?
 
-[[Whiskey, Straight |DrinkTalkStraight]]
-[[I like a fine pale ale |DrinkTalkAle]]
+[[Whiskey, straight. |DrinkTalkStraight]]
+[[I like a fine pale ale. |DrinkTalkAle]]
 ===
 title: DrinkTalkStraight
 tags: 
 colorID: 0
-position: 6037,-334
+position: 6035,-336
 ---
 Well straight just ain't my style drinks or otherwise, but you do you fella.
 I'm a fan of a nice Gin Sling myself. 
@@ -547,7 +549,7 @@ After we finish up here, I'll have no trouble finishin' the day with one.
 title: DrinkTalkAle
 tags: 
 colorID: 0
-position: 6422,-382
+position: 6421,-384
 ---
 Pale ale ain't a bad choice by any means, but I prefer a nice Gin Sling. 
 I'd recommend it to ya, but I don't think you'll be havin' another drink ever again pardner.
@@ -561,8 +563,8 @@ position: 6398,10
 Well you certainly seem to be hanging a little far back for a duel.
 You ain't trynna run away now, right pardner?
 
-[[I wouldn't dream of it |HangingBackDream]]
-[[Doubt you'd hit me if I did |HangingBackThreat]]
+[[I wouldn't dream of it. |HangingBackDream]]
+[[Doubt you'd hit me if I did. |HangingBackThreat]]
 ===
 title: HangingBackDream
 tags: 
