@@ -1,14 +1,14 @@
 title: Intro
 tags: 
 colorID: 0
-position: 167,126
+position: 166,126
 ---
 <<set $bullets to 3>> 
 <<set $gameOver to false>> 
 Alrighty pardner, you think you're such a hot shot?
 Take your paces and we'll see who'll come out on top.
 
-[[We doin' this here in the tavern? |Intro2]]
+[[We doin' this here in the saloon? |Intro2]]
 [[Can ya give a fella just a second? |Intro3]]
 ===
 title: WarningShot_Pre1
@@ -82,8 +82,8 @@ tags:
 colorID: 0
 position: 1701,307
 ---
-AH!
 <<set $bullets to ($bullets -1) >>
+AH!
 Dag gummit, I'm recountin some ol' memories and you open up that big bazoo of yours. If you really don't wanna listen to me you could always pull out that six shooter of yours.
 
 Makin' me waste a gosh dang bullet... bunch'a hogwash that is.

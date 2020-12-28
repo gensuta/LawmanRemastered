@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     [Space]
     [Header("Node Names")]
     [SerializeField] string warningShot1;
-    public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamTwo, blamEnd,shotBcGun;
+    public string warningShot2, warningShot3, shotFloor, handOnGun, shotInFoot, blamOne,blamTwo, blamEnd,shotBcGun,getDrinks;
 
     [SerializeField] float timeTillShot, timeTillWarning = 1f;
 
@@ -36,6 +37,9 @@ public class PlayerBehavior : MonoBehaviour
     float pauseTimer;
     bool wentBack;
 
+    public bool didDrink, didGetShotInFoot;
+    [SerializeField] TextMeshProUGUI endTExt;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +49,10 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(scenario.GetCurrentNode() == getDrinks)
+        {
+            didDrink = true;
+        }
 
         if (!scenario.gameOver && !scenario.pause)
         {
@@ -74,18 +82,7 @@ public class PlayerBehavior : MonoBehaviour
             if (scenario.startedMonologue)
             {
                 blamVisual.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    if (!scenario.saidBlam)
-                    {
-                        scenario.StartNewNode(blamOne);
-                        scenario.saidBlam = true;
-                    }
-                    else
-                    {
-                        scenario.StartNewNode(blamTwo);
-                    }
-                }
+
             }
 
             if (timeTillShot == 0)
@@ -146,7 +143,10 @@ public class PlayerBehavior : MonoBehaviour
                         else
                         {
                             if (distanceFromEnemy < 6f)
+                            {
                                 scenario.StartNewNode(shotInFoot);
+                                didGetShotInFoot = true;
+                            }
 
                             else
                                 scenario.StartNewNode(shotBcGun);
@@ -228,6 +228,7 @@ public class PlayerBehavior : MonoBehaviour
                     {
                         scenario.StartNewNode(shotInFoot);
                         anim.Play("playerShot");
+                        didGetShotInFoot = true;
                         wasShot = true;
                     }
                     else
@@ -250,13 +251,22 @@ public class PlayerBehavior : MonoBehaviour
                         enemyAnim.Play("enemyConfidentFire");
                         anim.Play("playerShot");
                         AudioSource.PlayClipAtPoint(shot, transform.position, 1f);
+                        endTExt.text = "Ouch… no comin’ back from that one…\nmaybe some smoother talkin’ could’a saved ya.\nOr maybe just bringin’ bullets to a duel in the first place!";
                         wasShot = true;
                     }
-                    else
-                        if (!scenario.isTyping())
+                    else if (!scenario.isTyping())
                     {
                         enemyAnim.Play("enemyIdle");
+                       
                     }
+                }
+                if (didGetShotInFoot)
+                {
+                    endTExt.text = "Unfortunately that whole leg needed to be amputated so that fella never could get his fair shot at ya.\nMaybe next time don’t get so close that a fella can’t even shoot a warnin’ shot!";
+                }
+                if (didDrink)
+                {
+                    endTExt.text = "The two of y’all had a nice heart to heart over some drinks and found some common ground.\nTurns out this town is big enough for the both of y’all.";
                 }
             }
             if(scenario.pause)
@@ -292,5 +302,18 @@ public class PlayerBehavior : MonoBehaviour
             timeTillStep = 0.2f;
         }
         
+    }
+
+    public void YellBlam()
+    {
+        if (!scenario.saidBlam)
+        {
+            scenario.StartNewNode(blamOne);
+            scenario.saidBlam = true;
+        }
+        else
+        {
+            scenario.StartNewNode(blamTwo);
+        }
     }
 }
